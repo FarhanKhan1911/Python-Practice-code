@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<style>
+    a{
+        color: #fff;
+        text-decoration: none;
+        font-size: 1.2em;
+    }
+    .hello{
+        position: absolute;
+        top: 40% !important;
+        right: 15%;
+        width: 1000px;
+    }
+</style>
+<div class="hello">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-6">
+
+            {% if user.is_authenticated %}
+            
+            <h1> YOUR LOGGED IN </h1>
+            <h3><a href="{% url 'logout' %}">Click here to log out</a></h3>
+            
+            {%else%}
+            
+            <h1>Your Not Logged in</h1>
+            <div class="row">
+                <div class="col-6">
+                    <a href="{% url 'register' %}">Register</a>
+                </div>
+                <div class="col-6">
+                    <a href="{% url 'login' %}">Login In</a>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock content %}
